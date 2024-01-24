@@ -8,9 +8,45 @@
   html, body {
     @apply font-sans bg-black text-white;
   }
+
+  header {
+    background: url('/images/arrow--right.svg') 775px 100px no-repeat, url('/images/arrow--top.svg') 600px top no-repeat;
+  }
+
+  svg {
+    @apply fill-current
+  }
 }
 
 @layer components {
+  .newsletter .register {
+    background: url('/images/circle.svg') center center no-repeat;
+    background-size: 316px 250px;
+    @apply pl-[78px] pt-[72px] w-[316px] h-[250px]
+  }
+
+  .how-it-works ul {
+    counter-reset: ordered-list;
+  }
+
+  .how-it-works ul li {
+    @apply border-b-[3px] border-b-mineShaft py-8 px-page flex items-center gap-8;
+  }
+
+  .how-it-works ul li:before {
+    color: white;
+    content: counter(ordered-list);
+    counter-increment: ordered-list;
+    @apply text-[90px] leading-[80px]
+  }
+
+  .how-it-works ul li:last-child {
+    @apply border-none;
+  }
+
+  .rules-guidelines {
+    @apply text-lg leading-loose
+  }
 
 }
 

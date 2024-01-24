@@ -1,5 +1,10 @@
 ---
 import "../tailwind.css";
+import Newsletter from "../components/newsletter.astro";
+import { getCollection, getEntry } from "astro:content";
+
+// get all participants
+const allParticipants = await getCollection("participants");
 
 const currentYear = () => new Date().getFullYear();
 ---
@@ -14,30 +19,36 @@ const currentYear = () => new Date().getFullYear();
     <!-- TODO: ADD OG TAGS -->
   </head>
   <body>
-    <header>
-      <h1>Two<br />Week<br />Build <span>Challenge</span></h1>
-      <input type="email" placeholder="Your Email" />
-      <button>Sign Up</button>
-      <div>Register for Free</div>
+    <header class="p-page">
+      <h1 class="uppercase text-[132px] leading-[114px] text-springBud mb-8">
+        Two<br />Week<br />Build <div
+          class="text-[62px] leading-[54px] capitalize text-white"
+        >
+          Challenge
+        </div>
+      </h1>
+      <Newsletter />
     </header>
 
-    <section>
-      <h3>Cohort 1</h3>
-      <h2>March 1 - 14, 2024</h2>
+    <section class="bg-springBud px-page py-10">
+      <h3 class="uppercase text-2xl mb-0 text-black">Cohort 1</h3>
+      <h2 class="text-black leading-none text-[8.6vw]">March 1 - 14, 2024</h2>
     </section>
 
-    <section>
-      <h2>How It Works</h2>
-      <ul>
+    <section class="py-10 how-it-works">
+      <h2 class="text-springBud text-6xl mb-3 px-page leading-none">
+        How It Works
+      </h2>
+      <ul class="text-6xl text-white">
         <li>Pick Something to Buid</li>
         <li>Build it in 2 Weeks</li>
         <li>Ship it</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Rules and Guidelines</h2>
-      <ul>
+    <section class="bg-white text-black py-10 px-page rules-guidelines">
+      <h2 class="text-6xl mb-3 leading-none">Rules and Guidelines</h2>
+      <ol class="list-decimal list-inside">
         <li>Have fun.</li>
         <li>Don’t overthink it.</li>
         <li>Don’t start until March 1, 2024.</li>
@@ -46,17 +57,33 @@ const currentYear = () => new Date().getFullYear();
           web application.
         </li>
         <li>At the end of 2 weeks, ship what you have.</li>
-      </ul>
+      </ol>
     </section>
 
-    <section>
-      <h2>Join Us</h2>
+    <section class="px-page py-10">
+      <h2 class="text-6xl leading-none mb-3 text-white">Join Us</h2>
+      <div class="flex flex-wrap gap-3">
+        {
+          allParticipants.map((participant) => (
+            <a href={participant.data.twitter}>
+              <img
+                src={participant.data.avatar}
+                alt={participant.data.name}
+                class="rounded-full w-[72px] h-[72px] border-2 border-white object-cover"
+              />
+            </a>
+          ))
+        }
+      </div>
     </section>
 
-    <footer>
+    <footer class="p-page text-neutral-500">
       Copyright &copy;{currentYear}
-      <a href="https://ahhacreative.com" target="_blank" rel="noreffer"
-        >Ah Ha Creative, LLC.</a
+      <a
+        class="border-b-2 border-neutral-500 hover:text-springBud"
+        href="https://compressed.fm"
+        target="_blank"
+        rel="noreffer">Compressed.fm.</a
       > All Rights Reserved.
     </footer>
   </body>

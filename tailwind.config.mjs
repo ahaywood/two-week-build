@@ -8,6 +8,9 @@ export default {
 				mineShaft: '#313131' /* dark gray */,
 				black: '#000000' /* black */,
 				white: '#ffffff' /* white */,
+			},
+			padding: {
+				page: '32px'
 			}
 		},
 		fontFamily: {
