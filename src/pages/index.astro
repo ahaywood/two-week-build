@@ -1,0 +1,63 @@
+---
+import "../tailwind.css";
+
+const currentYear = () => new Date().getFullYear();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Two Week Build</title>
+    <!-- TODO: ADD OG TAGS -->
+  </head>
+  <body>
+    <header>
+      <h1>Two<br />Week<br />Build <span>Challenge</span></h1>
+      <input type="email" placeholder="Your Email" />
+      <button>Sign Up</button>
+      <div>Register for Free</div>
+    </header>
+
+    <section>
+      <h3>Cohort 1</h3>
+      <h2>March 1 - 14, 2024</h2>
+    </section>
+
+    <section>
+      <h2>How It Works</h2>
+      <ul>
+        <li>Pick Something to Buid</li>
+        <li>Build it in 2 Weeks</li>
+        <li>Ship it</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Rules and Guidelines</h2>
+      <ul>
+        <li>Have fun.</li>
+        <li>Don’t overthink it.</li>
+        <li>Don’t start until March 1, 2024.</li>
+        <li>
+          You can build anything. Write an ebook. Design a UI library. Build a
+          web application.
+        </li>
+        <li>At the end of 2 weeks, ship what you have.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Join Us</h2>
+    </section>
+
+    <footer>
+      Copyright &copy;{currentYear}
+      <a href="https://ahhacreative.com" target="_blank" rel="noreffer"
+        >Ah Ha Creative, LLC.</a
+      > All Rights Reserved.
+    </footer>
+  </body>
+</html>
