@@ -1,4 +1,9 @@
 {
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#141414",
+    "titleBar.activeBackground": "#9eff02",
+    "titleBar.activeForeground": "#000000"
+  },
   "cSpell.words": [
     "signin",
     "SUPABASE"
