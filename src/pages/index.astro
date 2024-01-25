@@ -1,12 +1,11 @@
 ---
 import "../tailwind.css";
 import Newsletter from "../components/Newsletter.astro";
+import Footer from "../components/Footer.astro";
 import { getCollection, getEntry } from "astro:content";
 
 // get all participants
 const allParticipants = await getCollection("participants");
-
-const currentYear = () => new Date().getFullYear();
 ---
 
 <html lang="en">
@@ -19,7 +18,7 @@ const currentYear = () => new Date().getFullYear();
     <!-- TODO: ADD OG TAGS -->
   </head>
   <body>
-    <header class="p-page">
+    <header class="p-page mb-12">
       <h1 class="uppercase text-[132px] leading-[114px] text-springBud mb-8">
         Two<br />Week<br />Build <div
           class="text-[62px] leading-[54px] capitalize text-white"
@@ -77,15 +76,11 @@ const currentYear = () => new Date().getFullYear();
       </div>
     </section>
 
-    <footer class="p-page text-neutral-500">
-      Copyright &copy;{currentYear}
-      <a
-        class="border-b-2 border-neutral-500 hover:text-springBud"
-        href="https://compressed.fm"
-        target="_blank"
-        rel="noreffer">Compressed.fm.</a
-      > All Rights Reserved.
-    </footer>
+    <section class="border-t-[3px] border-t-mineShaft pt-[100px] text-center">
+      <Newsletter />
+    </section>
+
+    <Footer />
 
     <!-- TODO: Add FATHOM -->
 
@@ -93,4 +88,3 @@ const currentYear = () => new Date().getFullYear();
     <script src="https://kwesforms.com/v2/kwes-script.js" defer></script>
   </body>
 </html>
-../components/Newsletter.tsx

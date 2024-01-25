@@ -13,6 +13,10 @@
     background: url('/images/arrow--right.svg') 775px 100px no-repeat, url('/images/arrow--top.svg') 600px top no-repeat;
   }
 
+  footer a {
+    @apply border-b-2 border-neutral-500 hover:text-springBud
+  }
+
   svg {
     @apply fill-current
   }
