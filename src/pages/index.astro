@@ -1,90 +1,78 @@
 ---
-import "../tailwind.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Newsletter from "../components/Newsletter.astro";
 import Footer from "../components/Footer.astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 // get all participants
 const allParticipants = await getCollection("participants");
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Two Week Build</title>
-    <!-- TODO: ADD OG TAGS -->
-  </head>
-  <body>
-    <header class="p-page mb-12">
-      <h1 class="uppercase text-[132px] leading-[114px] text-springBud mb-8">
-        Two<br />Week<br />Build <div
-          class="text-[62px] leading-[54px] capitalize text-white"
-        >
-          Challenge
-        </div>
-      </h1>
-      <Newsletter />
-    </header>
-
-    <section class="bg-springBud px-page py-10">
-      <h3 class="uppercase text-2xl mb-0 text-black">Cohort 1</h3>
-      <h2 class="text-black leading-none text-[8.6vw]">March 1 - 14, 2024</h2>
-    </section>
-
-    <section class="py-10 how-it-works">
-      <h2 class="text-springBud text-6xl mb-3 px-page leading-none">
-        How It Works
-      </h2>
-      <ul class="text-6xl text-white">
-        <li>Pick Something to Buid</li>
-        <li>Build it in 2 Weeks</li>
-        <li>Ship it</li>
-      </ul>
-    </section>
-
-    <section class="bg-white text-black py-10 px-page rules-guidelines">
-      <h2 class="text-6xl mb-3 leading-none">Rules and Guidelines</h2>
-      <ol class="list-decimal list-inside">
-        <li>Have fun.</li>
-        <li>Don’t overthink it.</li>
-        <li>Don’t start until March 1, 2024.</li>
-        <li>
-          You can build anything. Write an ebook. Design a UI library. Build a
-          web application.
-        </li>
-        <li>At the end of 2 weeks, ship what you have.</li>
-      </ol>
-    </section>
-
-    <section class="px-page py-10">
-      <h2 class="text-6xl leading-none mb-3 text-white">Join Us</h2>
-      <div class="flex flex-wrap gap-3">
-        {
-          allParticipants.map((participant) => (
-            <a href={participant.data.twitter}>
-              <img
-                src={participant.data.avatar}
-                alt={participant.data.name}
-                class="rounded-full w-[72px] h-[72px] border-2 border-white object-cover"
-              />
-            </a>
-          ))
-        }
+<BaseLayout>
+  <header class="p-page mb-12">
+    <h1 class="uppercase text-[132px] leading-[114px] text-springBud mb-8">
+      Two<br />Week<br />Build <div
+        class="text-[62px] leading-[54px] capitalize text-white"
+      >
+        Challenge
       </div>
-    </section>
+    </h1>
+    <Newsletter />
+  </header>
 
-    <section class="border-t-[3px] border-t-mineShaft pt-[100px] text-center">
-      <Newsletter />
-    </section>
+  <section class="bg-springBud px-page py-10">
+    <h3 class="uppercase text-2xl mb-0 text-black">Cohort 1</h3>
+    <h2 class="text-black leading-none text-[8.6vw]">March 1 - 14, 2024</h2>
+  </section>
 
-    <Footer />
+  <section class="py-10 how-it-works">
+    <h2 class="text-springBud text-6xl mb-3 px-page leading-none">
+      How It Works
+    </h2>
+    <ul class="text-6xl text-white">
+      <li>Pick Something to Buid</li>
+      <li>Build it in 2 Weeks</li>
+      <li>Ship it</li>
+    </ul>
+  </section>
 
-    <!-- TODO: Add FATHOM -->
+  <section class="bg-white text-black py-10 px-page rules-guidelines">
+    <h2 class="text-6xl mb-3 leading-none">Rules and Guidelines</h2>
+    <ol class="list-decimal list-inside">
+      <li>Have fun.</li>
+      <li>Don’t overthink it.</li>
+      <li>Don’t start until March 1, 2024.</li>
+      <li>
+        You can build anything. Write an ebook. Design a UI library. Build a web
+        application.
+      </li>
+      <li>At the end of 2 weeks, ship what you have.</li>
+    </ol>
+  </section>
 
-    <!-- KWES FORMS -->
-    <script src="https://kwesforms.com/v2/kwes-script.js" defer></script>
-  </body>
-</html>
+  <section class="px-page py-10">
+    <h2 class="text-6xl leading-none mb-3 text-white">Join Us</h2>
+    <div class="flex flex-wrap gap-3">
+      {
+        allParticipants.map((participant) => (
+          <a href={participant.data.twitter}>
+            <img
+              src={participant.data.avatar}
+              alt={participant.data.name}
+              class="rounded-full w-[72px] h-[72px] border-2 border-white object-cover"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t-[3px] border-t-mineShaft pt-[100px] text-center">
+    <Newsletter />
+  </section>
+
+  <Footer />
+
+  <!-- KWES FORMS -->
+  <script src="https://kwesforms.com/v2/kwes-script.js" defer></script>
+</BaseLayout>

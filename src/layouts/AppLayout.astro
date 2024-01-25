@@ -1,0 +1,97 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import { supabase } from "../lib/supabase";
+
+const { cookies } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+let email = null;
+
+// if the user is logged in, set the session
+if (accessToken && refreshToken) {
+  const { data, error } = await supabase.auth.setSession({
+    refresh_token: refreshToken.value,
+    access_token: accessToken.value,
+  });
+
+  if (error) {
+    cookies.delete("sb-access-token", {
+      path: "/",
+    });
+    cookies.delete("sb-refresh-token", {
+      path: "/",
+    });
+  }
+
+  email = data?.user?.email;
+}
+
+const { title } = Astro.props;
+
+const stripPrependingSlash = (path: string) => {
+  if (path.startsWith("/")) {
+    return path.slice(1);
+  }
+  return path;
+};
+---
+
+<BaseLayout title={title}>
+  <div class="bg-arrowLeft bg-no-repeat">
+    {
+      !email && (
+        <a href="/login" class="absolute right-8 top-8">
+          LOGIN
+        </a>
+      )
+    }
+
+    <div>
+      <aside
+        class="p-8 fixed border-r-[#2f2f2f] border-r-2 h-screen w-[200px] flex flex-col justify-between"
+      >
+        <div>
+          <a href="/"
+            ><img
+              src="/images/logo.svg"
+              alt="Two Week Build Challenge"
+              class="mb-10"
+            /></a
+          >
+          <nav>
+            <ul class={stripPrependingSlash(Astro.url.pathname)}>
+              {
+                email && (
+                  <li class="me">
+                    <a href="/me">My Profile</a>
+                  </li>
+                )
+              }
+              <li class="updates"><a href="/updates">All Updates</a></li>
+              <li class="updates"><a href="/projects">All Projects</a></li>
+              <li class="leaderboard">
+                <a href="/leaderboard">Leaderboard</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {
+          email && (
+            <div>
+              <button>Add an Update</button>
+              <div>Amy Dutton</div>
+            </div>
+          )
+        }
+      </aside>
+      <main class="pl-[200px] pt-[130px]">
+        <slot />
+        <Footer />
+      </main>
+    </div>
+  </div>
+</BaseLayout>

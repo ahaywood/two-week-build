@@ -1,0 +1,12 @@
+---
+import LeaderboardListItem from "../components/LeaderboardListItem.astro";
+import AppLayout from "../layouts/AppLayout.astro";
+---
+
+<AppLayout title="Leaderboard">
+  <p class="text-battleshipGray font-sans text-lg leading-normal font-normal">
+    The only requirement to get on the leaderboard is to post a daily update.
+  </p>
+
+  <LeaderboardListItem avatar={{ alt: "Amy Dutton" }} />
+</AppLayout>

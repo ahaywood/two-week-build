@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +7,7 @@
 
 @layer base {
   html, body {
-    @apply font-sans bg-black text-white;
+    @apply font-mono bg-black text-white;
   }
 
   header {
@@ -19,6 +20,39 @@
 
   svg {
     @apply fill-current
+  }
+
+  .field {
+    @apply relative mb-12
+  }
+
+  nav {
+    @apply text-lg
+  }
+
+  nav ul li {
+    @apply mb-3
+  }
+
+  nav ul li a {
+    @apply hover:text-springBud
+  }
+
+  label,
+  label:has(+ input[type=email]:focus),
+  label:has(+ input[type=password]:focus),
+  label:has(+ input[type=text]:focus) {
+    @apply uppercase absolute text-mountainMist text-base left-8 -top-7 transition-all duration-300 ease-in-out pointer-events-none
+  }
+
+  label:has(+ input:placeholder-shown) {
+    @apply left-8 top-4 text-2xl text-white;
+  }
+
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    @apply bg-transparent text-white rounded-full border-[3px] border-white px-8 h-16 w-full
   }
 }
 
@@ -56,6 +90,10 @@
 
 @layer utilities {
   .center {
-    @appl flex items-center justify-center;
+    @apply flex items-center justify-center;
+  }
+
+  .page-grid {
+    @apply grid grid-cols-12 gap-x-5 min-h-screen
   }
 }

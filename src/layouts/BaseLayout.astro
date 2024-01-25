@@ -1,0 +1,19 @@
+---
+import "../tailwind.css";
+const { title = "" } = Astro.props.frontmatter || Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Two Week Build {title && `| ${title}`}</title>
+    <!-- TODO: ADD OG TAGS -->
+  </head>
+  <body>
+    <slot />
+    <!-- TODO: Add FATHOM -->
+  </body>
+</html>

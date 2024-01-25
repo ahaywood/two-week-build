@@ -1,4 +1,6 @@
 ---
+import AppLayout from "../layouts/AppLayout.astro";
+import Avatar from "../components/Avatar.astro";
 import { supabase } from "../lib/supabase";
 
 const { cookies, redirect } = Astro;
@@ -6,6 +8,7 @@ const { cookies, redirect } = Astro;
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");
 
+// if the user is not logged in, they can't visit the "me" page
 if (!accessToken || !refreshToken) {
   return redirect("/login");
 }
@@ -29,8 +32,20 @@ if (error) {
 const email = data?.user?.email;
 ---
 
-<h1>Welcome {email}</h1>
-<p>We are happy to see you here</p>
-<form action="/api/auth/signout">
-  <button type="submit">Sign out</button>
-</form>
+<AppLayout title="Me">
+  <div>
+    <Avatar alt="Amy Dutton" size="213px" />
+    <h1>Amy Dutton</h1>
+    <ul>
+      <li>Nashville, TN</li>
+      <li>lightspeedui.com</li>
+      <li>GitHub</li>
+      <li>@selfteachme</li>
+    </ul>
+  </div>
+
+  <!-- PROJECT DETAILS -->
+  <div></div>
+
+  <!-- UPDATES -->
+</AppLayout>

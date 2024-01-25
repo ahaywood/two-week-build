@@ -1,0 +1,42 @@
+---
+import AuthLayout from "../layouts/AuthLayout.astro";
+import Arrow from "../components/Icons/Arrow.astro";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+  return redirect("/dashboard");
+}
+---
+
+<AuthLayout title="Login">
+  <form action="/api/auth/signin" method="post" class="pt-3">
+    <div class="field">
+      <label for="email" for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="" />
+    </div>
+    <div class="field">
+      <a href="/forgot" class="hover:text-springBud right-6 absolute -top-7"
+        >Forgot?</a
+      >
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="" />
+    </div>
+    <button
+      type="submit"
+      class="flex items-center uppercase bg-white font-mono rounded-full w-full text-black justify-center gap-4 pl-10 h-16 text-2xl leading-none hover:bg-springBud mb-16"
+      >submit
+      <Arrow />
+    </button>
+    <p class="text-center">
+      NEED AN ACCOUNT? <a
+        href="/register"
+        class="border-b-battleshipGray border-b-2 hover:text-springBud"
+        >Sign Up for FREE</a
+      >
+    </p>
+  </form>
+</AuthLayout>

@@ -1,0 +1,17 @@
+---
+import Avatar from "./Avatar.astro";
+import UpdateSquare from "./UpdateSquare.astro";
+const { avatar, name, slug, updates } = Astro.props;
+---
+
+<div class="flex">
+  <Avatar {...avatar} />
+  <div>
+    <h4 class="text-xl mb-2">Amy Dutton</h4>
+    <ul class="flex items-center gap-3">
+      <li><UpdateSquare number="1" /></li>
+      <li><UpdateSquare number="1" /></li>
+      <li><UpdateSquare number="1" /></li>
+    </ul>
+  </div>
+</div>

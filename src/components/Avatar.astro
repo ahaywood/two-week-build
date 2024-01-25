@@ -1,0 +1,25 @@
+---
+const { alt, className = "", size = "72px", src } = Astro.props;
+
+const firstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase();
+};
+---
+
+{
+  src ? (
+    <img
+      src={src}
+      alt={alt}
+      style={{ width: size, height: size }}
+      class={`rounded-full object-cover ${className}`}
+    />
+  ) : (
+    <div
+      class={`rounded-full text-2xl bg-mineShaft aspect-square center text-springBud ${className}`}
+      style={{ width: size, height: size }}
+    >
+      {firstLetter(alt)}
+    </div>
+  )
+}

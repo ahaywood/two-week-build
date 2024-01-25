@@ -1,0 +1,25 @@
+---
+import { CopyLink } from "./CopyLink";
+const { date, content, bio, reactions, id } = Astro.props;
+---
+
+<div>
+  <!-- date -->
+  <div>
+    <div>MAR</div>
+    <div>2</div>
+    <div>2024</div>
+  </div>
+
+  <!-- content -->
+  <div>
+    <p>What's new?</p>
+  </div>
+
+  <!-- emoji -->
+  <div>
+    <CopyLink slug={`/update/${id}`} />
+  </div>
+
+  <!-- bio -->
+</div>

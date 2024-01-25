@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import type { Code } from "astro:components";
+const { title } = Astro.props.frontmatter || Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="bg-arrowInterior bg-no-repeat">
+    <div class="page-grid">
+      <aside class="p-8 fixed">
+        <a href="/"
+          ><img src="/images/logo.svg" alt="Two Week Build Challenge" /></a
+        >
+      </aside>
+      <main class="col-start-5 col-span-6 pt-[130px]">
+        <h1 class="text-springBud text-8xl font-mono leading-none mb-8">
+          {title}
+        </h1>
+        <div class="content"><slot /></div>
+      </main>
+    </div>
+    <Footer />
+  </div>
+</BaseLayout>
