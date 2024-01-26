@@ -46,6 +46,7 @@
     @apply uppercase absolute text-mountainMist text-base left-8 -top-7 transition-all duration-300 ease-in-out pointer-events-none
   }
 
+  /* changes the label display when the placeholder is showing */
   label:has(+ input:placeholder-shown) {
     @apply left-8 top-4 text-2xl text-white;
   }
@@ -59,6 +60,8 @@
 }
 
 @layer components {
+  /* ----------- navigation within the ap layout  --------------------------- */
+  /* the code injects the current page URL on the `ul` tag dynamically */
   nav ul.me li.me,
   nav ul.updates_all li.updates_all,
   nav ul.projects li.projects,
@@ -95,17 +98,87 @@
     @apply text-lg leading-loose
   }
 
+  /* ----------- content for each update ----------------------------------- */
   .content {
     @apply font-sans
   }
 
   .content h1, h2, h3 {
-    @apply text-white font-bold
+    @apply text-white font-bold mb-2
+  }
+
+  .content h1 {
+    @apply text-4xl
+  }
+
+  .content h2 {
+    @apply text-2xl
+  }
+
+  .content h3 {
+    @apply text-lg
   }
 
   .content p {
-    @apply text-battleshipGray mb-8
+    @apply text-battleshipGray mb-8 text-lg leading-relaxed
   }
+
+  .content ol {
+    @apply list-decimal list-inside mb-8
+  }
+
+  .content ul {
+    @apply list-disc list-inside mb-8
+  }
+
+  .content li {
+    @apply text-battleshipGray text-lg leading-relaxed
+  }
+
+  .content a {
+    @apply text-white border-b-1 hover:text-springBud
+  }
+
+  /* ----------- comment ---------------------------------------------------- */
+  .content .comment {
+    @apply border-codGray border-2 mb-10 relative
+  }
+
+  /* comment - triangle on the left, pointing to the avatar */
+  .content .comment:before,
+  .content .comment:after {
+    content: '';
+    @apply block border-[16px] border-transparent  absolute
+  }
+
+  /* this is the triangle background color */
+  .content .comment:before {
+    @apply -left-[29px] top-1 border-r-licorice z-[2]
+  }
+
+  /* this is the triangle outline / stroke color */
+  .content .comment:after {
+    @apply -left-[32px] top-1 border-r-codGray z-[1]
+  }
+
+  .content .comment p {
+    @apply text-white;
+  }
+
+  .content .comment p {
+    @apply mb-4
+  }
+
+  /* removes margin from the bottom if this is the only or last paragraph */
+  .content .comment p:last-of-type {
+    @apply mb-0;
+  }
+
+  /* styles the name in the comment's byline */
+  .content .byline a {
+    @apply text-springBud border-b-1 border-b-transparent hover:border-b-white hover:text-white
+  }
+
 
 }
 
@@ -114,10 +187,12 @@
     @apply flex items-center justify-center;
   }
 
+  /* default page layout grid */
   .page-grid {
     @apply grid grid-cols-12 gap-x-5 content-start
   }
 
+  /* submi button on the auth layout */
   .auth-button {
     @apply flex items-center uppercase bg-white font-mono rounded-full w-full text-black justify-center gap-4 pl-10 h-16 text-2xl leading-none hover:bg-springBud mb-16;
   }
@@ -126,10 +201,12 @@
     @apply px-5 py-2 hover:bg-springBud hover:text-black
   }
 
+  /* hand drawn border / frame that wraps an image */
   .frame {
     @apply bg-frame p-5 bg-no-repeat bg-center bg-full flex items-center justify-center
   }
 
+  /* used for buttons and links that have an icon right next to them */
   .with-icon {
     @apply flex items-center gap-2;
   }
