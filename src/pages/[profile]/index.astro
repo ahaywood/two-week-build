@@ -1,0 +1,99 @@
+---
+import { CopyLink } from "../../components/CopyLink";
+import { EmojiCount } from "../../components/EmojiCount.tsx";
+import EmojiPicker from "../../components/EmojiPicker.astro";
+import ProfileHeader from "../../components/ProfileHeader.astro";
+import StackedDate from "../../components/StackedDate.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
+import { supabase } from "../../lib/supabase";
+
+const { profile } = Astro.params;
+const { data, error } = await supabase
+  .from("users")
+  .select("*, projects(*, updates(*))")
+  .eq("username", profile)
+  .single();
+if (error) throw error;
+console.log({ data });
+
+const id = 1;
+// TODO: Handle empty return
+---
+
+<AppLayout title="selfteachme">
+  <ProfileHeader />
+  <div class="page-grid gap-y-14">
+    <div class="col-span-7 col-start-5 bg-licorice py-10 px-14 -ml-14">
+      <h3 class="font-sans text-white text-2xl mb-3 font-bold">
+        Light Speed UI
+      </h3>
+      <p class="text-lg text-white font-sans">
+        I’m building a component library in Figma.
+      </p>
+    </div>
+
+    <div class="col-start-2 col-span-3 mr-10 pr-10 border-r-3 border-r-codGray">
+      <div class="sticky top-5">
+        <StackedDate date="2024-01-25 06:08:55.914382+00" />
+      </div>
+    </div>
+    <div class="col-span-5 content">
+      <h3>Heading</h3>
+      <p>
+        Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat
+        minim et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem
+        velit eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris
+        sint minim deserunt ut incididunt laborum excepteur aliqua quis amet.
+        Adipisicing velit dolor pariatur reprehenderit non sunt aliqua sunt
+        occaecat enim laboris commodo incididunt ea tempor.
+      </p>
+
+      <p>
+        Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat
+        minim et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem
+        velit eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris
+        sint minim deserunt ut incididunt laborum excepteur aliqua quis amet.
+        Adipisicing velit dolor pariatur reprehenderit non sunt aliqua sunt
+        occaecat enim laboris commodo incididunt ea tempor.
+      </p>
+
+      <p>
+        Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat
+        minim et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem
+        velit eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris
+        sint minim deserunt ut incididunt laborum excepteur aliqua quis amet.
+        Adipisicing velit dolor pariatur reprehenderit non sunt aliqua sunt
+        occaecat enim laboris commodo incididunt ea tempor.
+      </p>
+
+      <p>
+        Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat
+        minim et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem
+        velit eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris
+        sint minim deserunt ut incididunt laborum excepteur aliqua quis amet.
+        Adipisicing velit dolor pariatur reprehenderit non sunt aliqua sunt
+        occaecat enim laboris commodo incididunt ea tempor.
+      </p>
+    </div>
+
+    <!-- emoji picker -->
+    <div class="col-span-2 text-center">
+      <div class="grid grid-cols-2 gap-3 sticky top-10">
+        <EmojiCount number={1} emoji="🙌" />
+        <EmojiCount number={5} emoji="🦄" />
+        <EmojiCount number={12} emoji="🚀" />
+        <EmojiCount number={100} emoji="🩵" />
+        <EmojiCount number={32} emoji="🤩" />
+        <EmojiPicker />
+        <div class="col-span-2 pt-3">
+          <CopyLink className="mx-auto" slug={`/update/${id}`} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full overflow-scroll bg-yellow-400 text-black p-10">
+    {JSON.stringify(data)}
+  </div>
+</AppLayout>
+../../components/EmojiCount.tsx

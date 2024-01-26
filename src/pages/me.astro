@@ -29,7 +29,18 @@ if (error) {
   return redirect("/login");
 }
 
-const email = data?.user?.email;
+const id = data?.user?.id;
+
+console.log({ id });
+
+// get all of the data for the current user
+const result = await supabase
+  .from("users")
+  .select("*, projects(*, updates(*))")
+  .eq("auth_id", id)
+  .single();
+if (result.error) throw error;
+// TODO: Handle empty return
 ---
 
 <AppLayout title="Me">
@@ -42,6 +53,8 @@ const email = data?.user?.email;
       <li>GitHub</li>
       <li>@selfteachme</li>
     </ul>
+
+    {JSON.stringify(result.data)}
   </div>
 
   <!-- PROJECT DETAILS -->

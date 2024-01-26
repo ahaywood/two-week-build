@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import Footer from "../components/Footer.astro";
+import Login from "../components/Icons/Login.astro";
 import { supabase } from "../lib/supabase";
+import Search from "../components/Icons/Search.astro";
 
 const { cookies } = Astro;
 
@@ -31,23 +33,39 @@ if (accessToken && refreshToken) {
 
 const { title } = Astro.props;
 
+/**
+ * Takes the current URL path and converts into a form that can be used as a CSS class name
+ * @param path {string}
+ */
+const cssClassify = (path: string) => {
+  const newPath = stripPrependingSlash(path);
+  return replaceSlashesWithUnderscores(newPath);
+};
+
 const stripPrependingSlash = (path: string) => {
   if (path.startsWith("/")) {
     return path.slice(1);
   }
   return path;
 };
+
+const replaceSlashesWithUnderscores = (path: string) => {
+  return path.replace(/\//g, "_");
+};
 ---
 
 <BaseLayout title={title}>
   <div class="bg-arrowLeft bg-no-repeat">
-    {
-      !email && (
-        <a href="/login" class="absolute right-8 top-8">
-          LOGIN
-        </a>
-      )
-    }
+    <div class="absolute right-8 top-8 flex justify-end gap-4">
+      <a href="#" class="with-icon button bg-codGray"><Search /> SEARCH</a>
+      {
+        !email && (
+          <a href="/login" class="with-icon button bg-codGray">
+            <Login /> LOGIN
+          </a>
+        )
+      }
+    </div>
 
     <div>
       <aside
@@ -62,7 +80,7 @@ const stripPrependingSlash = (path: string) => {
             /></a
           >
           <nav>
-            <ul class={stripPrependingSlash(Astro.url.pathname)}>
+            <ul class={cssClassify(Astro.url.pathname)}>
               {
                 email && (
                   <li class="me">
@@ -70,8 +88,10 @@ const stripPrependingSlash = (path: string) => {
                   </li>
                 )
               }
-              <li class="updates"><a href="/updates">All Updates</a></li>
-              <li class="updates"><a href="/projects">All Projects</a></li>
+              <li class="updates_all">
+                <a href="/updates/all">All Updates</a>
+              </li>
+              <li class="projects"><a href="/projects">All Projects</a></li>
               <li class="leaderboard">
                 <a href="/leaderboard">Leaderboard</a>
               </li>
@@ -84,11 +104,17 @@ const stripPrependingSlash = (path: string) => {
             <div>
               <button>Add an Update</button>
               <div>Amy Dutton</div>
+              <div>
+                <a href="/account">My Account</a>
+              </div>
+              <form action="/api/auth/signout">
+                <button type="submit">Sign out</button>
+              </form>
             </div>
           )
         }
       </aside>
-      <main class="pl-[200px] pt-[130px]">
+      <main class="pl-[200px] pt-[80px]">
         <slot />
         <Footer />
       </main>

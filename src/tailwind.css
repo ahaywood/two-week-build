@@ -41,6 +41,7 @@
   label,
   label:has(+ input[type=email]:focus),
   label:has(+ input[type=password]:focus),
+  label:has(+ input[type=url]:focus),
   label:has(+ input[type=text]:focus) {
     @apply uppercase absolute text-mountainMist text-base left-8 -top-7 transition-all duration-300 ease-in-out pointer-events-none
   }
@@ -51,12 +52,20 @@
 
   input[type=text],
   input[type=password],
+  input[type=url],
   input[type=email] {
-    @apply bg-transparent text-white rounded-full border-[3px] border-white px-8 h-16 w-full
+    @apply bg-transparent text-springBud rounded-full border-[3px] border-white px-8 h-16 w-full
   }
 }
 
 @layer components {
+  nav ul.me li.me,
+  nav ul.updates_all li.updates_all,
+  nav ul.projects li.projects,
+  nav ul.leaderboard li.leaderboard {
+    @apply text-springBud;
+  }
+
   .newsletter .register {
     background: url('/images/circle.svg') center center no-repeat;
     background-size: 316px 250px;
@@ -86,6 +95,18 @@
     @apply text-lg leading-loose
   }
 
+  .content {
+    @apply font-sans
+  }
+
+  .content h1, h2, h3 {
+    @apply text-white font-bold
+  }
+
+  .content p {
+    @apply text-battleshipGray mb-8
+  }
+
 }
 
 @layer utilities {
@@ -94,6 +115,22 @@
   }
 
   .page-grid {
-    @apply grid grid-cols-12 gap-x-5 min-h-screen
+    @apply grid grid-cols-12 gap-x-5 content-start
+  }
+
+  .auth-button {
+    @apply flex items-center uppercase bg-white font-mono rounded-full w-full text-black justify-center gap-4 pl-10 h-16 text-2xl leading-none hover:bg-springBud mb-16;
+  }
+
+  .button {
+    @apply px-5 py-2 hover:bg-springBud hover:text-black
+  }
+
+  .frame {
+    @apply bg-frame p-5 bg-no-repeat bg-center bg-full flex items-center justify-center
+  }
+
+  .with-icon {
+    @apply flex items-center gap-2;
   }
 }

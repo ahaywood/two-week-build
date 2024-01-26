@@ -1,7 +1,17 @@
 ---
 import AppLayout from "../layouts/AppLayout.astro";
+import { supabase } from "../lib/supabase";
+
+const { data, error } = await supabase
+  .from("projects")
+  .select("*, users(*), updates(*)")
+  .single();
+if (error) throw error;
+console.log({ data });
+// TODO: Handle empty return
 ---
 
 <AppLayout title="Projects">
   <h1>List of All Projects</h1>
+  {JSON.stringify(data)}
 </AppLayout>

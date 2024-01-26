@@ -1,9 +1,80 @@
-<h1>Register</h1>
-<p>Already have an account? <a href="/signin">Sign in</a></p>
-<form action="/api/auth/register" method="post">
-  <label for="email" for="email">Email</label>
-  <input type="email" name="email" id="email" />
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" />
-  <button type="submit">Login</button>
-</form>
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import Arrow from "../components/Icons/Arrow.astro";
+---
+
+<InteriorLayout title="Thank You">
+  <p class="text-lg font-sans leading-normal mb-8 text-battleshipGray">
+    We’re sending a confirmation email your way. In the meantime, register for
+    an account below. This will set up your profile page for posting updates.
+  </p>
+
+  <!-- VIDEO -->
+  <div class="frame mb-12">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/yYTSdlOdkn0?si=JvJXXPJrZSawT7Q2"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+
+  <form action="/api/auth/register" method="post" class="mb-20">
+    <div class="field">
+      <label for="email">Your Email*</label>
+      <input type="email" name="email" id="email" placeholder="" required />
+    </div>
+    <div class="field">
+      <label for="text">Username*</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder=""
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="password">Your Password*</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder=""
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="location">Your Location</label>
+      <input type="text" name="location" id="location" placeholder="" />
+    </div>
+    <div class="field">
+      <label for="website">Your Website</label>
+      <input type="url" name="website" id="website" placeholder="" />
+    </div>
+    <div class="field">
+      <label for="github">GitHub</label>
+      <input type="url" name="github" id="github" placeholder="" />
+    </div>
+    <div class="field">
+      <label for="twitter">Twitter</label>
+      <input type="url" name="twitter" id="twitter" placeholder="" />
+    </div>
+    <div class="field">
+      <label for="avatar">Your Avatar</label>
+      <input type="file" name="avatar" />
+    </div>
+    <button type="submit" class="auth-button">
+      SUBMIT
+      <Arrow />
+    </button>
+    <p class="text-center">
+      Already have an account? <a
+        href="/login"
+        class="border-b-2 border-white hover:text-springBud">LOGIN</a
+      >
+    </p>
+  </form>
+</InteriorLayout>

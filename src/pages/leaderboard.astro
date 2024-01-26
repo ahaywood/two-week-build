@@ -1,12 +1,20 @@
 ---
 import LeaderboardListItem from "../components/LeaderboardListItem.astro";
 import AppLayout from "../layouts/AppLayout.astro";
+import { supabase } from "../lib/supabase";
+
+const { data, error } = await supabase.rpc("project_update_count");
+console.log({ data });
 ---
 
 <AppLayout title="Leaderboard">
   <p class="text-battleshipGray font-sans text-lg leading-normal font-normal">
     The only requirement to get on the leaderboard is to post a daily update.
+    The point is not <em>what</em> you build, but getting in a habit of shipping
+    daily. Small wins add up!
   </p>
 
   <LeaderboardListItem avatar={{ alt: "Amy Dutton" }} />
+
+  {JSON.stringify(data)}
 </AppLayout>

@@ -1,0 +1,54 @@
+---
+import Avatar from "./Avatar.astro";
+import GitHub from "./Icons/GitHub.astro";
+import Link from "./Icons/Link.astro";
+import Location from "./Icons/Location.astro";
+import X from "./Icons/X.astro";
+---
+
+<div class="page-grid content-start gap-y-14">
+  <!-- profile details -->
+  <div class="col-start-2 col-span-3 text-center bg-no-repeat">
+    <div class="relative -top-[50px]">
+      <div class="absolute -left-10 -top-6">
+        <img src="/images/arrow--profile.svg" alt="hand drawn arrow" />
+      </div>
+      <Avatar size="215px" alt="A" className="mx-auto relative" />
+    </div>
+  </div>
+  <div class="col-span-7">
+    <h1
+      class="text-[80px] font-sans font-bold text-springBud leading-none mb-8"
+    >
+      Amy Dutton
+    </h1>
+    <div
+      class="grid grid-cols-2 gap-x-5 gap-y-2 font-sans text-mountainMist font-bold text-sm mb-8"
+    >
+      <div class="with-icon">
+        <Location />
+        Nashville, TN
+      </div>
+      <a
+        href="https://github.com/ahaywood"
+        class="with-icon hover:text-springBud"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <GitHub />
+        <span>https://github.com/ahaywood</span>
+      </a>
+      <a href="https://lightspeedui.com" class="with-icon hover:text-springBud">
+        <Link />
+        lightspeedui.com
+      </a>
+      <a
+        href="https://twitter.com/selfteachme"
+        class="with-icon hover:text-springBud"
+      >
+        <X />
+        @selftachme
+      </a>
+    </div>
+  </div>
+</div>

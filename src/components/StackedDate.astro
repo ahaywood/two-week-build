@@ -1,0 +1,41 @@
+---
+const { date } = Astro.props;
+
+const getDateArray = (date: string) => {
+  const dateOnly = date.split(" "); // break up the date and time
+  const dateArray = dateOnly[0].split("-");
+  return [dateArray[2], dateArray[1], dateArray[0]];
+};
+
+const getMonthName = (month: string) => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return months[parseInt(month) - 1];
+};
+
+const [day, month, year] = getDateArray(date);
+---
+
+<div class="flex items-center flex-col">
+  <div
+    class="uppercase text-[42px] font-sans font-bold text-white leading-none"
+  >
+    {getMonthName(month)}
+  </div>
+  <div class="text-springBud text-[155px] font-sans leading-none font-bold">
+    {day}
+  </div>
+  <div class="text-white text-4xl font-sans font-bold">{year}</div>
+</div>

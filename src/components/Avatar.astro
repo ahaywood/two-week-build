@@ -2,6 +2,7 @@
 const { alt, className = "", size = "72px", src } = Astro.props;
 
 const firstLetter = (str: string) => {
+  if (!str) return "🤪";
   return str.charAt(0).toUpperCase();
 };
 ---
@@ -16,7 +17,7 @@ const firstLetter = (str: string) => {
     />
   ) : (
     <div
-      class={`rounded-full text-2xl bg-mineShaft aspect-square center text-springBud ${className}`}
+      class={`rounded-full text-2xl bg-mineShaft aspect-square center text-white ${className}`}
       style={{ width: size, height: size }}
     >
       {firstLetter(alt)}
