@@ -16,21 +16,15 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return new Response("Email and password are required", { status: 400 });
   }
 
-  try {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-    if (error) throw Error(error.message);
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+  if (error) return new Response(error.message, { status: 500 });
 
-    // take the email and user id and add data to the user table
-    const userResult = await supabase.from("users").insert({ location, website, github, twitter, avatar, username, auth_id: data?.user?.id })
-    if (userResult.error) throw Error(userResult.error.message);
-
-  } catch (error) {
-    console.error({ error });
-    return new Response(error.message, { status: 500 });
-  }
+  // take the email and user id and add data to the user table
+  const userResult = await supabase.from("users").insert({ location, website, github, twitter, avatar, username, auth_id: data?.user?.id })
+  if (userResult.error) return new Response(userResult.error.message, { status: 500 });
 
   return redirect("/waiting");
 };
