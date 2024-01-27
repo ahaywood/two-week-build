@@ -1,5 +1,49 @@
 ---
+import Update from "../../../components/Update.astro";
+import UpdateHeader from "../../../components/UpdateHeader.astro";
 import AppLayout from "../../../layouts/AppLayout.astro";
+import { supabase } from "../../../lib/supabase";
+import {
+  getCurrentMonthWithZeros,
+  currentYear,
+} from "../../../lib/dateHelpers";
+
+const { number } = Astro.params;
+
+// if the number is greater than 14, redirect to the all updates page
+if (parseInt(number as string) > 14) {
+  return Astro.redirect("/updates/all");
+}
+
+/**
+ * Add a pretending zero, if it's a single digit number
+ * @param number the number of the update
+ */
+const prependNumberWithZeros = (number: number) => {
+  if (number < 10) {
+    return `0${number}`;
+  }
+  return number;
+};
+
+// get the content out of supabase
+const { data, error } = await supabase
+  .from("updates")
+  .select("*, projects(*, users(*))")
+  .eq(
+    "date",
+    `${currentYear}-${getCurrentMonthWithZeros()}-${prependNumberWithZeros(
+      parseInt(number as string)
+    )}`
+  );
+if (error) throw error;
+// TODO: Add Pagination
 ---
 
-<AppLayout title="Updates"><p>All Updates for a Specific Day</p></AppLayout>
+<AppLayout title="Updates">
+  <UpdateHeader />
+  <div class="page-grid">
+    <Update isBioShowing={true} />
+  </div>
+  {JSON.stringify(data)}
+</AppLayout>

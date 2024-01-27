@@ -1,17 +1,25 @@
 ---
 import Avatar from "./Avatar.astro";
-import UpdateSquare from "./UpdateSquare.astro";
+import ProjectTracker from "./ProjectTracker.astro";
 const { avatar, name, slug, updates } = Astro.props;
+const numberOfUpdates = new Array(14).fill(null);
 ---
 
-<div class="flex">
+<div class="flex gap-4">
   <Avatar {...avatar} />
   <div>
     <h4 class="text-xl mb-2">Amy Dutton</h4>
     <ul class="flex items-center gap-3">
-      <li><UpdateSquare number="1" /></li>
-      <li><UpdateSquare number="1" /></li>
-      <li><UpdateSquare number="1" /></li>
+      {
+        numberOfUpdates.map((item, index) => (
+          <li>
+            <ProjectTracker number={index + 1} status="missed" />
+          </li>
+          // <li><ProjectTracker number={1} status="completed" /></li>
+          // <li><ProjectTracker number={1} status="today" /></li>
+          // <li><ProjectTracker number={1} status="future" /></li>
+        ))
+      }
     </ul>
   </div>
 </div>

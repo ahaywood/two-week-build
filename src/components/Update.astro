@@ -1,25 +1,112 @@
 ---
+import Comment from "./Comment.astro";
+import { default as CommentIcon } from "./Icons/Comment.astro";
 import { CopyLink } from "./CopyLink";
-const { date, content, bio, reactions, id } = Astro.props;
+import { EmojiCount } from "./EmojiCount.tsx";
+import EmojiPicker from "./EmojiPicker.astro";
+import StackedDate from "./StackedDate.astro";
+import Avatar from "./Avatar.astro";
+import ProfileDetails from "./ProfileDetails.astro";
+const { date, content, bio, reactions, id, isBioShowing = false } = Astro.props;
 ---
 
-<div>
-  <!-- date -->
-  <div>
-    <div>MAR</div>
-    <div>2</div>
-    <div>2024</div>
+<!-- This component needs to be wrapped with a page-grid -->
+<div class="col-start-2 col-span-3 mr-10 pr-10 border-r-3 border-r-codGray">
+  <div class={`sticky top-5 ${isBioShowing ? "pb-20" : ""}`}>
+    <StackedDate date="2024-01-25 06:08:55.914382+00" />
   </div>
-
-  <!-- content -->
-  <div>
-    <p>What's new?</p>
-  </div>
-
-  <!-- emoji -->
-  <div>
-    <CopyLink slug={`/update/${id}`} />
-  </div>
-
-  <!-- bio -->
 </div>
+<div class="col-span-5 content">
+  <h3>Heading</h3>
+  <p>
+    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
+    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
+    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
+    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
+    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
+    commodo incididunt ea tempor.
+  </p>
+
+  <p>
+    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
+    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
+    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
+    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
+    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
+    commodo incididunt ea tempor.
+  </p>
+
+  <p>
+    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
+    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
+    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
+    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
+    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
+    commodo incididunt ea tempor.
+  </p>
+
+  <p>
+    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
+    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
+    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
+    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
+    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
+    commodo incididunt ea tempor.
+  </p>
+
+  <div class="pt-8 mb-16">
+    <Comment />
+    <Comment />
+    <button
+      class="button with-icon bg-springBud text-black font-bold uppercase hover:bg-white hover:text-black"
+    >
+      <CommentIcon />
+      Leave a Comment</button
+    >
+  </div>
+</div>
+
+<!-- emoji picker -->
+<div class="col-span-2 text-center">
+  <div class="grid grid-cols-2 gap-3 sticky top-10">
+    <EmojiCount number={1} emoji="🙌" />
+    <EmojiCount number={5} emoji="🦄" />
+    <EmojiCount number={12} emoji="🚀" />
+    <EmojiCount number={100} emoji="🩵" />
+    <EmojiCount number={32} emoji="🤩" />
+    <EmojiPicker />
+    <div class="col-span-2 pt-3">
+      <CopyLink className="mx-auto" slug={`/update/${id}`} />
+    </div>
+  </div>
+</div>
+
+<!-- TODO: Address order of content -- seems strange to have update, comment, bio
+  The bio should be closer to the person who wrote the update.
+-->
+{
+  isBioShowing && (
+    <div class="col-span-8 col-start-3 grid grid-cols-subgrid relative -top-10">
+      <div class="col-span-2">
+        <a href={`/profile/selfteachme`}>
+          <Avatar
+            alt="A"
+            size="144px"
+            src="https://picsum.photos/seed/1706285540310/300/300"
+          />
+        </a>
+      </div>
+      <div class="col-span-6 pt-5">
+        <div class="font-6 font-sans font-bold mb-4 text-2xl">
+          <a
+            href={`/profile/selfteachme`}
+            class="text-springBud hover:text-white"
+          >
+            Amy Dutton
+          </a>
+        </div>
+        <ProfileDetails />
+      </div>
+    </div>
+  )
+}

@@ -1,9 +1,6 @@
 ---
 import Avatar from "./Avatar.astro";
-import GitHub from "./Icons/GitHub.astro";
-import Link from "./Icons/Link.astro";
-import Location from "./Icons/Location.astro";
-import X from "./Icons/X.astro";
+import ProfileDetails from "./ProfileDetails.astro";
 ---
 
 <div class="page-grid content-start gap-y-14">
@@ -22,33 +19,6 @@ import X from "./Icons/X.astro";
     >
       Amy Dutton
     </h1>
-    <div
-      class="grid grid-cols-2 gap-x-5 gap-y-2 font-sans text-mountainMist font-bold text-sm mb-8"
-    >
-      <div class="with-icon">
-        <Location />
-        Nashville, TN
-      </div>
-      <a
-        href="https://github.com/ahaywood"
-        class="with-icon hover:text-springBud"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <GitHub />
-        <span>https://github.com/ahaywood</span>
-      </a>
-      <a href="https://lightspeedui.com" class="with-icon hover:text-springBud">
-        <Link />
-        lightspeedui.com
-      </a>
-      <a
-        href="https://twitter.com/selfteachme"
-        class="with-icon hover:text-springBud"
-      >
-        <X />
-        @selftachme
-      </a>
-    </div>
+    <ProfileDetails />
   </div>
 </div>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  status?: "current" | "future" | "default";
+  number: number;
+}
+
+const { status = "default", number } = Astro.props;
+---
+
+{
+  status === "future" ? (
+    <div class="text-lg aspect-square inline-block w-10 h-10 center font-mono font-bold border-2 border-transparent bg-transparent text-black opacity-30">
+      {number}
+    </div>
+  ) : (
+    <a
+      href={`/updates/daily/${number}`}
+      class={`text-lg aspect-square inline-block w-10 h-10 center font-mono font-bold border-2 hover:bg-white hover:text-black
+      ${status === "default" ? "text-black border-black" : ""}
+      ${status === "current" ? "bg-black text-springBud border-black" : ""}
+    `}
+    >
+      {number}
+    </a>
+  )
+}

@@ -29,6 +29,7 @@ export default {
 				mountainMist: '#949494' /* medium gray */,
 				licorice: '#141414', /* almost black */
 				codGray: '#2f2f2f', /* dark gray */
+				chicago: '#5e5e5e',
 			},
 			padding: {
 				page: '32px'

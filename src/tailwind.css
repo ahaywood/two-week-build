@@ -43,19 +43,23 @@
   label:has(+ input[type=password]:focus),
   label:has(+ input[type=url]:focus),
   label:has(+ input[type=text]:focus) {
-    @apply uppercase absolute text-mountainMist text-base left-8 -top-7 transition-all duration-300 ease-in-out pointer-events-none
+    @apply uppercase absolute text-mountainMist text-base left-8 -top-7 transition-all duration-300 ease-in-out pointer-events-none font-bold
   }
 
   /* changes the label display when the placeholder is showing */
   label:has(+ input:placeholder-shown) {
-    @apply left-8 top-4 text-2xl text-white;
+    @apply left-8 top-4 text-2xl text-white font-bold
   }
 
   input[type=text],
   input[type=password],
   input[type=url],
   input[type=email] {
-    @apply bg-transparent text-springBud rounded-full border-[3px] border-white px-8 h-16 w-full
+    @apply bg-transparent text-springBud rounded-full border-[3px] border-white px-8 h-16 w-full font-bold
+  }
+
+  textarea {
+    @apply bg-transparent text-springBud rounded-[16px] border-[3px] border-white px-6 h-[200px] w-full py-5
   }
 }
 
@@ -179,7 +183,32 @@
     @apply text-springBud border-b-1 border-b-transparent hover:border-b-white hover:text-white
   }
 
+  /* banner */
+  .banner .wrapper {
+    @apply col-start-3 col-span-7
+  }
 
+  .banner h1 {
+    @apply text-black font-mono text-[125px] leading-[0.9] tracking-tight
+  }
+
+  /* dropdown menu */
+  .popup-menu {
+    @apply bg-white text-black absolute bottom-[40px] -right-2 w-[200px]
+  }
+
+  .popup-menu:after {
+    content: '';
+    @apply block border-[12px] border-transparent border-t-white absolute -bottom-[22px] right-2
+  }
+
+  .popup-menu ul li {
+    @apply border-b-2 border-black last:border-b-0
+  }
+
+  .popup-menu .menu-item {
+    @apply whitespace-nowrap with-icon px-5 py-2 hover:bg-springBud w-full
+  }
 }
 
 @layer utilities {

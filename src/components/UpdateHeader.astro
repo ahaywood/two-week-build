@@ -1,0 +1,36 @@
+---
+import UpdateNav from "./UpdateNav.astro";
+import { currentDay, currentMonth, getFullMonthName } from "../lib/dateHelpers";
+import Banner from "./Banner.astro";
+
+const numberOfUpdates = new Array(14).fill(null);
+---
+
+<Banner>
+  <div class="page-grid">
+    <div class="col-start-2 col-span-8">
+      <h1 class="mb-8">Updates</h1>
+      <ul class="flex items-center gap-4">
+        <li class="h-10 text-3xl center text-springBud bg-black px-5 uppercase">
+          {getFullMonthName(currentMonth + 1)}
+        </li>
+        {
+          numberOfUpdates.map((update, index: number) => (
+            <li>
+              <UpdateNav
+                number={index + 1}
+                status={
+                  currentDay === index + 1
+                    ? "current"
+                    : currentDay < index + 1
+                      ? "future"
+                      : "default"
+                }
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Banner>

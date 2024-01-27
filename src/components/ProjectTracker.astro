@@ -1,0 +1,28 @@
+---
+import Check from "./Icons/Check.astro";
+
+interface Props {
+  number: number;
+  status: "missed" | "completed" | "today" | "future";
+}
+
+const { number, status } = Astro.props;
+---
+
+{
+  status === "completed" ? (
+    <div class="w-8 h-8 aspect-square center border-2 font-mono text-sm font-bold bg-springBud text-black border-springBud">
+      <Check />
+    </div>
+  ) : (
+    <div
+      class={`w-8 h-8 aspect-square center border-2 font-mono text-sm font-bold
+    ${status === "missed" ? "bg-transparent text-chicago border-chicago" : ""}
+    ${status === "today" ? "bg-white text-black border-white" : ""}
+    ${status === "future" ? "bg-transparent text-white border-white" : ""}
+  `}
+    >
+      {number}
+    </div>
+  )
+}

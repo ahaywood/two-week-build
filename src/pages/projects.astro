@@ -1,4 +1,6 @@
 ---
+import Banner from "../components/Banner.astro";
+import ProjectOverview from "../components/ProjectOverview.astro";
 import AppLayout from "../layouts/AppLayout.astro";
 import { supabase } from "../lib/supabase";
 
@@ -12,6 +14,21 @@ console.log({ data });
 ---
 
 <AppLayout title="Projects">
-  <h1>List of All Projects</h1>
-  {JSON.stringify(data)}
+  <Banner>
+    <div class="page-grid">
+      <div class="wrapper">
+        <h1>All Projects</h1>
+      </div>
+    </div>
+  </Banner>
+  <div class="page-grid">
+    <div class="col-start-3 col-span-8">
+      <div class="flex flex-col gap-10 mb-20">
+        <ProjectOverview />
+        <ProjectOverview />
+        <ProjectOverview />
+      </div>
+    </div>
+  </div>
+  <div class="text-black bg-yellow-400 p-10">{JSON.stringify(data)}</div>
 </AppLayout>

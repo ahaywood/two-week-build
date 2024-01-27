@@ -1,7 +1,26 @@
 ---
+import Arrow from "../components/Icons/Arrow.astro";
 import InteriorLayout from "../layouts/InteriorLayout.astro";
 ---
 
 <InteriorLayout title="Contact">
-  <h1>Contact</h1>
+  <p>We'd love to hear from you.</p>
+  <form action="">
+    <div class="field">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="" required />
+    </div>
+    <div class="field">
+      <label for="email">Your Email</label>
+      <input type="email" id="email" value="email" placeholder="" required />
+    </div>
+    <div class="field">
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message"></textarea>
+    </div>
+    <button type="submit" class="auth-button">
+      Submit
+      <Arrow />
+    </button>
+  </form>
 </InteriorLayout>

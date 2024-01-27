@@ -1,29 +1,7 @@
 ---
+import { getDateArray, getMonthName } from "../lib/dateHelpers";
+
 const { date } = Astro.props;
-
-const getDateArray = (date: string) => {
-  const dateOnly = date.split(" "); // break up the date and time
-  const dateArray = dateOnly[0].split("-");
-  return [dateArray[2], dateArray[1], dateArray[0]];
-};
-
-const getMonthName = (month: string) => {
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  return months[parseInt(month) - 1];
-};
 
 const [day, month, year] = getDateArray(date);
 ---

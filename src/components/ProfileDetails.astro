@@ -1,0 +1,35 @@
+---
+import Location from "./Icons/Location.astro";
+import GitHub from "./Icons/GitHub.astro";
+import Link from "./Icons/Link.astro";
+import X from "./Icons/X.astro";
+---
+
+<div
+  class="grid grid-cols-2 gap-x-5 gap-y-2 font-sans text-mountainMist font-bold text-sm mb-8"
+>
+  <div class="with-icon">
+    <Location />
+    Nashville, TN
+  </div>
+  <a
+    href="https://github.com/ahaywood"
+    class="with-icon hover:text-springBud"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <GitHub />
+    <span>https://github.com/ahaywood</span>
+  </a>
+  <a href="https://lightspeedui.com" class="with-icon hover:text-springBud">
+    <Link />
+    lightspeedui.com
+  </a>
+  <a
+    href="https://twitter.com/selfteachme"
+    class="with-icon hover:text-springBud"
+  >
+    <X />
+    @selftachme
+  </a>
+</div>
