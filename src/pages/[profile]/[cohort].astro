@@ -1,7 +1,36 @@
 ---
+import ProfileHeader from "../../components/ProfileHeader.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+import Update from "../../components/Update.astro";
 import AppLayout from "../../layouts/AppLayout.astro";
+import { supabase } from "../../lib/supabase";
+
+// TODO: Update query, should only pull project information for a specific cohort
+const { profile } = Astro.params;
+const { data, error } = await supabase
+  .from("users")
+  .select("*, projects(*, updates(*))")
+  .eq("username", profile)
+  .single();
+if (error) throw error;
+console.log({ data });
+
+const id = 1;
+// TODO: Handle empty return
 ---
 
-<AppLayout title="Project">
-  <p>individual profile page for a specific cohort</p>
+<AppLayout title="selfteachme">
+  <ProfileHeader />
+  <!-- TODO: Add Cohort Nav -->
+  <div class="page-grid gap-y-[80px]">
+    <div class="col-start-5 col-span-7">
+      <ProjectOverview isAvatarShowing={false} />
+    </div>
+    <Update />
+    <Update />
+  </div>
+
+  <div class="w-full overflow-scroll bg-yellow-400 text-black p-10">
+    {JSON.stringify(data)}
+  </div>
 </AppLayout>

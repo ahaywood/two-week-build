@@ -2,6 +2,9 @@
 import AppLayout from "../layouts/AppLayout.astro";
 import Avatar from "../components/Avatar.astro";
 import { supabase } from "../lib/supabase";
+import ProfileHeader from "../components/ProfileHeader.astro";
+import ProjectOverview from "../components/ProjectOverview.astro";
+import Update from "../components/Update.astro";
 
 const { cookies, redirect } = Astro;
 
@@ -34,6 +37,7 @@ const id = data?.user?.id;
 console.log({ id });
 
 // get all of the data for the current user
+// TDOO: Should get information for the current, logged in user
 const result = await supabase
   .from("users")
   .select("*, projects(*, updates(*))")
@@ -43,22 +47,16 @@ if (result.error) throw error;
 // TODO: Handle empty return
 ---
 
+<!-- TODO: Add Update buttons to this page -->
 <AppLayout title="Me">
-  <div>
-    <Avatar alt="Amy Dutton" size="213px" />
-    <h1>Amy Dutton</h1>
-    <ul>
-      <li>Nashville, TN</li>
-      <li>lightspeedui.com</li>
-      <li>GitHub</li>
-      <li>@selfteachme</li>
-    </ul>
-
-    {JSON.stringify(result.data)}
+  <ProfileHeader />
+  <div class="page-grid gap-y-[80px]">
+    <ProjectOverview />
+    <Update />
+    <Update />
   </div>
 
-  <!-- PROJECT DETAILS -->
-  <div></div>
-
-  <!-- UPDATES -->
+  <div class="w-full overflow-scroll bg-yellow-400 text-black p-10">
+    {JSON.stringify(data)}
+  </div>
 </AppLayout>

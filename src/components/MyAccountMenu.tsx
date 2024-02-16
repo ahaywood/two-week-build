@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEscapeKey } from "../lib/useEscapeKey";
+import { useOutsideClick } from "../lib/useClickOutside";
 
 export const MyAccountMenu = () => {
   const [isMenuShowing, setIsMenuShowing] = useState(false);
+  const ref = useRef(null);
+
+  useEscapeKey(() => setIsMenuShowing(false));
+  useOutsideClick(() => setIsMenuShowing(false), ref);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <AnimatePresence>
         {isMenuShowing && (
           <motion.div
@@ -63,6 +69,7 @@ export const MyAccountMenu = () => {
         className="text-springBud"
         onClick={() => setIsMenuShowing((prevValue) => !prevValue)}
       >
+        {/* 3 dots icon */}
         <svg
           width="24"
           height="24"

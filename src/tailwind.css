@@ -10,8 +10,10 @@
     @apply font-mono bg-black text-white;
   }
 
-  header {
-    background: url('/images/arrow--right.svg') 775px 100px no-repeat, url('/images/arrow--top.svg') 600px top no-repeat;
+  @media (min-width: 768px) {
+    header {
+      background: url('/images/arrow--right.svg') 775px 100px no-repeat, url('/images/arrow--top.svg') 600px top no-repeat;
+    }
   }
 
   footer a {
@@ -39,6 +41,7 @@
   }
 
   label,
+  label:has(+ input[type=search]:focus),
   label:has(+ input[type=email]:focus),
   label:has(+ input[type=password]:focus),
   label:has(+ input[type=url]:focus),
@@ -51,11 +54,17 @@
     @apply left-8 top-4 text-2xl text-white font-bold
   }
 
+  input[type=search],
   input[type=text],
   input[type=password],
   input[type=url],
   input[type=email] {
     @apply bg-transparent text-springBud rounded-full border-[3px] border-white px-8 h-16 w-full font-bold
+  }
+
+  input[type=text].short,
+  input[type=search].short {
+    @apply h-[40px] px-4
   }
 
   textarea {
@@ -84,14 +93,14 @@
   }
 
   .how-it-works ul li {
-    @apply border-b-[3px] border-b-mineShaft py-8 px-page flex items-center gap-8;
+    @apply border-b-[3px] border-b-mineShaft py-8 px-page flex items-start md:items-center gap-8;
   }
 
   .how-it-works ul li:before {
     color: white;
     content: counter(ordered-list);
     counter-increment: ordered-list;
-    @apply text-[90px] leading-[80px]
+    @apply text-[38px] md:text-[90px] leading-none md:leading-[80px]
   }
 
   .how-it-works ul li:last-child {
@@ -141,6 +150,15 @@
 
   .content a {
     @apply text-white border-b-1 hover:text-springBud
+  }
+
+  .emoji-picker {
+    @apply relative;
+  }
+
+  .emoji-picker:before {
+    content: '';
+    @apply block border-[15px] border-transparent border-b-codGray absolute right-[30px] -top-[30px]
   }
 
   /* ----------- comment ---------------------------------------------------- */

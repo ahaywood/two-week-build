@@ -3,7 +3,9 @@ import ProfileHeader from "../../components/ProfileHeader.astro";
 import AppLayout from "../../layouts/AppLayout.astro";
 import { supabase } from "../../lib/supabase";
 import Update from "../../components/Update.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
 
+// TODO: Update query, should only pull project information for the current cohort
 const { profile } = Astro.params;
 const { data, error } = await supabase
   .from("users")
@@ -20,16 +22,9 @@ const id = 1;
 <AppLayout title="selfteachme">
   <ProfileHeader />
   <div class="page-grid gap-y-[80px]">
-    <!-- project summary -->
-    <div class="col-span-7 col-start-5 bg-licorice py-10 px-14 -ml-14">
-      <h3 class="font-sans text-white text-2xl mb-3 font-bold">
-        Light Speed UI
-      </h3>
-      <p class="text-lg text-white font-sans">
-        I’m building a component library in Figma.
-      </p>
+    <div class="col-start-5 col-span-7">
+      <ProjectOverview isAvatarShowing={false} />
     </div>
-
     <Update />
     <Update />
   </div>
@@ -38,4 +33,3 @@ const id = 1;
     {JSON.stringify(data)}
   </div>
 </AppLayout>
-../../components/EmojiCount.tsx

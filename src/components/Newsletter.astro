@@ -7,7 +7,7 @@ import Arrow from "./Icons/Arrow.astro";
   action="https://kwesforms.com/api/foreign/forms/toyYcLrR9215nenXgNOe"
   method="POST"
 >
-  <div class="relative w-[500px] text-left">
+  <div class="relative w-full md:w-[500px] text-left">
     <input
       type="email"
       placeholder="YOUR EMAIL"
@@ -16,17 +16,21 @@ import Arrow from "./Icons/Arrow.astro";
       data-kw-rules="required|email"
     />
     <button
-      class="absolute right-5 top-4 text-white hover:text-springBud hover:right-4 transition-all duration-200 ease-in-out"
+      class="absolute right-5 top-4 text-white hover:text-springBud transition-color duration-200 ease-in-out group/arrow"
       type="submit"
     >
-      <Arrow />
+      <div
+        class="relative right-0 group-hover/arrow:-right-2 transition-all duration-200 ease-in-out"
+      >
+        <Arrow />
+      </div>
+      <div
+        class="register hidden md:block text-left circle uppercase absolute -right-[257px] -top-[56px] rotate-[10deg] text-[32px] leading-none"
+      >
+        Register
+        <br />
+        for Free
+      </div>
     </button>
-  </div>
-  <div
-    class="register text-left circle uppercase absolute -right-[240px] -top-[56px] rotate-[10deg] text-[32px] leading-none pointer-events-none"
-  >
-    Register
-    <br />
-    for Free
   </div>
 </form>

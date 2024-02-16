@@ -1,7 +1,31 @@
 ---
 import InteriorLayout from "../layouts/InteriorLayout.astro";
+import { getCollection } from "astro:content";
+
+// get all participants - from markdown files
+const allFaqs = await getCollection("faqs");
 ---
 
+<!-- TODO: Write Content and Style Page -->
 <InteriorLayout title="About">
-  <p>This is the about page</p>
+  <p>About this project</p>
+  <p>Who are we? Amy, James, Brad, and Bekah</p>
+  <p>Frequently Asked Questions</p>
+
+  <ul>
+    {faqs.map((faq, index: number) => <li key={index}>{faq.question}</li>)}
+  </ul>
+
+  <p>Colophon / Tech Stack</p>
+  <ul>
+    <li>Astro</li>
+    <li>Tailwind</li>
+    <li>Supabase</li>
+
+    <li>Why this set of technology?</li>
+    <li>Font</li>
+    <li>Color Palette</li>
+
+    <li>Link out to an indepth blog post</li>
+  </ul>
 </InteriorLayout>

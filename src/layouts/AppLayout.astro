@@ -3,10 +3,10 @@ import BaseLayout from "./BaseLayout.astro";
 import Footer from "../components/Footer.astro";
 import Login from "../components/Icons/Login.astro";
 import { supabase } from "../lib/supabase";
-import Search from "../components/Icons/Search.astro";
 import Newsletter from "../components/Newsletter.astro";
 import PlusCircle from "../components/Icons/PlusCircle.astro";
 import Avatar from "../components/Avatar.astro";
+import { Search } from "../components/Search.tsx";
 import { MyAccountMenu } from "../components/MyAccountMenu";
 
 const { cookies } = Astro;
@@ -61,7 +61,7 @@ const replaceSlashesWithUnderscores = (path: string) => {
 <BaseLayout title={title}>
   <div class="bg-arrowLeft bg-no-repeat">
     <div class="absolute right-8 top-8 flex justify-end gap-4">
-      <a href="#" class="with-icon button bg-codGray"><Search /> SEARCH</a>
+      <Search />
       {
         !email && (
           <a href="/login" class="with-icon button bg-codGray">

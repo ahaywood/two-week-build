@@ -1,5 +1,58 @@
 ---
+import Banner from "../components/Banner.astro";
+import Arrow from "../components/Icons/Arrow.astro";
 import AppLayout from "../layouts/AppLayout.astro";
 ---
 
-<AppLayout title="">Account page managing password, email, etc.</AppLayout>
+<AppLayout title="My Account">
+  <Banner>
+    <h1>My Account</h1>
+  </Banner>
+  <div class="page-grid">
+    <!-- TODO: Connect form -->
+    <form action="">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" name="email" value="" placeholder="" required />
+      </div>
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" name="username" value="" placeholder="" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="password">Confirm Password</label>
+        <input type="password" name="password" value="" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="location">Your Location</label>
+        <input type="text" name="location" id="location" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="website">Your Website</label>
+        <input type="url" name="website" id="website" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="github">GitHub</label>
+        <input type="url" name="github" id="github" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="twitter">Twitter</label>
+        <input type="url" name="twitter" id="twitter" placeholder="" />
+      </div>
+      <div class="field">
+        <label for="avatar">Your Avatar</label>
+        <input type="file" name="avatar" />
+      </div>
+      <div class="field">
+        <button class="auth-button">
+          Submit
+          <Arrow />
+        </button>
+      </div>
+    </form>
+  </div>
+</AppLayout>

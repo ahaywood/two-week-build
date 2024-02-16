@@ -1,9 +1,11 @@
 ---
 import Avatar from "./Avatar.astro";
+
+const { isAvatarShowing = true } = Astro.props;
 ---
 
 <div class="flex gap-4">
-  <Avatar alt="A" size="72px" />
+  {isAvatarShowing && <Avatar alt="A" size="72px" />}
   <div class="bg-licorice py-10 px-14 flex-1">
     <h2 class="font-sans font-bold text-2xl">Light Speed UI</h2>
     <p class="font-sans text-lg leading-normal">

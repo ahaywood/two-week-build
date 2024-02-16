@@ -17,10 +17,12 @@ console.log({ data });
 ---
 
 <BaseLayout>
-  <header class="p-page mb-12">
-    <h1 class="uppercase text-[132px] leading-[114px] text-springBud mb-8">
+  <header class="p-page md:mb-12">
+    <h1
+      class="uppercase text-[90px] md:text-[132px] leading-[80px] md:leading-[114px] text-springBud mb-8"
+    >
       Two<br />Week<br />Build <div
-        class="text-[62px] leading-[54px] capitalize text-white"
+        class="text-[42px] leading-[40px] md:text-[62px] md:leading-[54px] capitalize text-white"
       >
         Challenge
       </div>
@@ -34,10 +36,10 @@ console.log({ data });
   </section>
 
   <section class="py-10 how-it-works">
-    <h2 class="text-springBud text-6xl mb-3 px-page leading-none">
+    <h2 class="text-springBud text-5xl md:text-6xl mb-3 px-page leading-none">
       How It Works
     </h2>
-    <ul class="text-6xl text-white">
+    <ul class="text-2xl md:text-6xl text-white">
       <li>Pick Something to Buid</li>
       <li>Build it in 2 Weeks</li>
       <li>Ship it</li>
@@ -45,7 +47,9 @@ console.log({ data });
   </section>
 
   <section class="bg-white text-black py-10 px-page rules-guidelines">
-    <h2 class="text-6xl mb-3 leading-none text-black">Rules and Guidelines</h2>
+    <h2 class="text-5xl md:text-6xl mb-3 leading-none text-black">
+      Rules and Guidelines
+    </h2>
     <ol class="list-decimal list-inside">
       <li>Have fun.</li>
       <li>Don’t overthink it.</li>
@@ -76,7 +80,9 @@ console.log({ data });
     </div>
   </section>
 
-  <section class="border-t-[3px] border-t-mineShaft pt-[100px] text-center">
+  <section
+    class="border-t-[3px] border-t-mineShaft pt-[100px] text-center px-5 md:px-0"
+  >
     <Newsletter />
   </section>
 

@@ -33,6 +33,10 @@ export default {
 			},
 			padding: {
 				page: '32px'
+			},
+			zIndex: {
+				searchButton: 9999,
+				search: 9998,
 			}
 		},
 		fontFamily: {

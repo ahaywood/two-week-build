@@ -3,7 +3,7 @@ import Comment from "./Comment.astro";
 import { default as CommentIcon } from "./Icons/Comment.astro";
 import { CopyLink } from "./CopyLink";
 import { EmojiCount } from "./EmojiCount.tsx";
-import EmojiPicker from "./EmojiPicker.astro";
+import { EmojiPicker } from "./EmojiPicker.tsx";
 import StackedDate from "./StackedDate.astro";
 import Avatar from "./Avatar.astro";
 import ProfileDetails from "./ProfileDetails.astro";
@@ -74,7 +74,7 @@ const { date, content, bio, reactions, id, isBioShowing = false } = Astro.props;
     <EmojiCount number={12} emoji="🚀" />
     <EmojiCount number={100} emoji="🩵" />
     <EmojiCount number={32} emoji="🤩" />
-    <EmojiPicker />
+    <EmojiPicker client:only />
     <div class="col-span-2 pt-3">
       <CopyLink className="mx-auto" slug={`/update/${id}`} />
     </div>
