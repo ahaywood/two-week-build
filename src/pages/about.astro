@@ -12,9 +12,19 @@ const allFaqs = await getCollection("faqs");
   <p>Who are we? Amy, James, Brad, and Bekah</p>
   <p>Frequently Asked Questions</p>
 
-  <ul>
-    {faqs.map((faq, index: number) => <li key={index}>{faq.question}</li>)}
-  </ul>
+  {
+    allFaqs && (
+      <ul>
+        {allFaqs.map((faq) => (
+          <li>
+            {faq.data.question}
+            <br />
+            {faq.body}
+          </li>
+        ))}
+      </ul>
+    )
+  }
 
   <p>Colophon / Tech Stack</p>
   <ul>

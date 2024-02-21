@@ -1,6 +1,8 @@
 ---
 import Avatar from "./Avatar.astro";
 import ProfileDetails from "./ProfileDetails.astro";
+
+const { user } = Astro.props;
 ---
 
 <div class="page-grid content-start gap-y-14">
@@ -10,15 +12,20 @@ import ProfileDetails from "./ProfileDetails.astro";
       <div class="absolute -left-10 -top-6">
         <img src="/images/arrow--profile.svg" alt="hand drawn arrow" />
       </div>
-      <Avatar size="215px" alt="A" className="mx-auto relative" />
+      <Avatar
+        size="215px"
+        alt={user.name}
+        src={user.src}
+        className="mx-auto relative"
+      />
     </div>
   </div>
   <div class="col-span-7">
     <h1
       class="text-[80px] font-sans font-bold text-springBud leading-none mb-8"
     >
-      Amy Dutton
+      {user.name}
     </h1>
-    <ProfileDetails />
+    <ProfileDetails user={user} />
   </div>
 </div>

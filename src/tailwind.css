@@ -73,6 +73,18 @@
 }
 
 @layer components {
+  @media (min-width: 768px) {
+    .bg-interior {
+      background: url('/images/arrow--interior.svg') calc(100% - 70vw) 85px no-repeat;
+    }
+  }
+
+  @media (min-width: 1275px) {
+    .bg-interior {
+      background: url('/images/arrow--interior.svg') left 100px no-repeat;
+    }
+  }
+
   /* ----------- navigation within the ap layout  --------------------------- */
   /* the code injects the current page URL on the `ul` tag dynamically */
   nav ul.me li.me,

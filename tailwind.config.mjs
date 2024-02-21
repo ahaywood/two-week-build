@@ -4,13 +4,11 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'arrowInterior': "url('/images/arrow--interior.svg')",
 				'arrowAuth': "url('/images/arrow--auth.svg')",
 				'arrowProfile': "url('/images/arrow--profile.svg')",
 				'frame': "url('/images/frame.svg')",
 			},
 			backgroundPosition: {
-				'arrowInterior': 'left 100px',
 				'arrowAuth': '120% 65px',
 			},
 			backgroundSize: {

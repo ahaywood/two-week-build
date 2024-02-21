@@ -4,6 +4,7 @@ import AppLayout from "../../layouts/AppLayout.astro";
 import { supabase } from "../../lib/supabase";
 import Update from "../../components/Update.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
+import { Update as UpdateType } from "../../types";
 
 // TODO: Update query, should only pull project information for the current cohort
 const { profile } = Astro.params;
@@ -20,13 +21,21 @@ const id = 1;
 ---
 
 <AppLayout title="selfteachme">
-  <ProfileHeader />
+  <ProfileHeader user={data} />
   <div class="page-grid gap-y-[80px]">
     <div class="col-start-5 col-span-7">
-      <ProjectOverview isAvatarShowing={false} />
+      <ProjectOverview
+        isAvatarShowing={false}
+        project={data.projects[0]}
+        user={data}
+      />
     </div>
-    <Update />
-    <Update />
+    {
+      data.projects[0].updates &&
+        data.projects[0].updates.map((update: UpdateType) => (
+          <Update update={update} />
+        ))
+    }
   </div>
 
   <div class="w-full overflow-scroll bg-yellow-400 text-black p-10">

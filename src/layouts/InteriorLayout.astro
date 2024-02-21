@@ -6,16 +6,18 @@ const { title } = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <div class="bg-arrowInterior bg-no-repeat">
+  <div class="bg-interior bg-no-repeat">
     <div class="page-grid min-h-screen">
-      <aside class="p-8 fixed">
+      <aside class="p-page md:p-8 md:fixed col-span-12">
         <a href="/"
           ><img src="/images/logo.svg" alt="Two Week Build Challenge" /></a
         >
       </aside>
-      <main class="col-start-5 col-span-6 pt-[130px]">
+      <main
+        class="col-span-12 md:col-start-5 md:col-span-6 md:pt-[130px] px-page md:px-0"
+      >
         <h1
-          class="text-springBud text-8xl font-mono leading-none mb-8 -tracking-tight"
+          class="text-springBud text-4xl md:text-6xl lg:text-8xl font-mono leading-none mb-8 -tracking-tight"
         >
           {title}
         </h1>

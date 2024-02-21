@@ -1,15 +1,58 @@
 ---
 import Avatar from "./Avatar.astro";
+import Arrow from "./Icons/Arrow.astro";
 
-const { isAvatarShowing = true } = Astro.props;
+const {
+  isAvatarShowing = true,
+  isUpdatesLinkShowing = false,
+  isProfileDetailsShowing = false,
+  project,
+  user,
+} = Astro.props;
 ---
 
 <div class="flex gap-4">
-  {isAvatarShowing && <Avatar alt="A" size="72px" />}
-  <div class="bg-licorice py-10 px-14 flex-1">
-    <h2 class="font-sans font-bold text-2xl">Light Speed UI</h2>
+  {
+    isAvatarShowing && (
+      <a href={`/${user.username}`}>
+        <Avatar alt={user.name} src={user.avatar} size="72px" />
+      </a>
+    )
+  }
+  <div class="bg-licorice py-5 px-8 flex-1">
+    <div class="flex justify-between">
+      <div class="font-sans text-battleshipGray">
+        {
+          isProfileDetailsShowing && (
+            <>
+              <a
+                href={`/${user.username}`}
+                class="font-bold underline hover:text-white inline-block mb-4"
+              >
+                <strong>{user.name}</strong>
+              </a>{" "}
+              &bull; <a href={`/${user.username}`}>@{user.username}</a>
+            </>
+          )
+        }
+      </div>
+      <div>
+        {
+          isUpdatesLinkShowing && (
+            <a
+              href={`/${user.username}`}
+              class="flex text-springBud items-center hover:text-white mb-4"
+            >
+              <Arrow size={24} />
+              UPDATES
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <h2 class="font-sans font-bold text-2xl">{project.name}</h2>
     <p class="font-sans text-lg leading-normal">
-      I'm building a component library in Figma
+      {project.description}
     </p>
   </div>
 </div>

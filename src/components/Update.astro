@@ -2,57 +2,24 @@
 import Comment from "./Comment.astro";
 import { default as CommentIcon } from "./Icons/Comment.astro";
 import { CopyLink } from "./CopyLink";
-import { EmojiCount } from "./EmojiCount.tsx";
-import { EmojiPicker } from "./EmojiPicker.tsx";
+import { EmojiCount } from "./EmojiCount";
+import { EmojiPicker } from "./EmojiPicker";
 import StackedDate from "./StackedDate.astro";
 import Avatar from "./Avatar.astro";
 import ProfileDetails from "./ProfileDetails.astro";
 const { date, content, bio, reactions, id, isBioShowing = false } = Astro.props;
+
+const { update } = Astro.props;
 ---
 
 <!-- This component needs to be wrapped with a page-grid -->
 <div class="col-start-2 col-span-3 mr-10 pr-10 border-r-3 border-r-codGray">
   <div class={`sticky top-5 ${isBioShowing ? "pb-20" : ""}`}>
-    <StackedDate date="2024-01-25 06:08:55.914382+00" />
+    {update?.created_at && <StackedDate date={update.created_at} />}
   </div>
 </div>
 <div class="col-span-5 content">
-  <h3>Heading</h3>
-  <p>
-    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
-    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
-    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
-    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
-    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
-    commodo incididunt ea tempor.
-  </p>
-
-  <p>
-    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
-    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
-    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
-    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
-    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
-    commodo incididunt ea tempor.
-  </p>
-
-  <p>
-    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
-    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
-    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
-    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
-    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
-    commodo incididunt ea tempor.
-  </p>
-
-  <p>
-    Anim duis qui laborum veniam excepteur non cillum dolor labore fugiat minim
-    et occaecat ut consectetur. Quis voluptate duis non aliquip Lorem velit
-    eiusmod exercitation. Ad adipisicing eiusmod consectetur laboris sint minim
-    deserunt ut incididunt laborum excepteur aliqua quis amet. Adipisicing velit
-    dolor pariatur reprehenderit non sunt aliqua sunt occaecat enim laboris
-    commodo incididunt ea tempor.
-  </p>
+  {update?.content && update.content}
 
   <div class="pt-8 mb-16">
     <Comment />

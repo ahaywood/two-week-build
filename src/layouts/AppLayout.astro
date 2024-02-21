@@ -61,7 +61,7 @@ const replaceSlashesWithUnderscores = (path: string) => {
 <BaseLayout title={title}>
   <div class="bg-arrowLeft bg-no-repeat">
     <div class="absolute right-8 top-8 flex justify-end gap-4">
-      <Search />
+      <Search client:visible />
       {
         !email && (
           <a href="/login" class="with-icon button bg-codGray">
