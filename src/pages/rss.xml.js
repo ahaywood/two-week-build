@@ -8,11 +8,11 @@ export async function GET(context) {
     .select("*, projects(*, users(*))");
   const items = data.map((update) => {
     return {
-      // title
-      // pubDate
-      // customData
+      title: update.title,
+      pubDate: update.created_at,
       link: `${context.site}/updates/${update.id}`,
       content: update.content,
+      // customData
     }
   })
 
