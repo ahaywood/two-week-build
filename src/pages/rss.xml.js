@@ -21,13 +21,6 @@ export async function GET(context) {
     title: "Two Week Build - Cohort 1",
     description: "Updates from the Two Week Build Challenge",
     site: 'https://twoweekbuild.com',
-    items: [
-      {
-        title: 'Welcome to Two Week Build',
-        pubDate: new Date('2021-06-01'),
-        link: '/welcome',
-        description: 'Welcome to the Two Week Build Challenge! We are so excited to have you join us for the first cohort of Two Week Build.',
-      }
-    ]
+    items
   });
 }
