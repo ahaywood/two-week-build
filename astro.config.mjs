@@ -13,5 +13,6 @@ export default defineConfig({
     applyBaseStyles: false
   }), react(), mdx()],
   output: "server",
+  site: "https://twoweekbuild.com",
   adapter: vercel()
 });

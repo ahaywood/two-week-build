@@ -14,8 +14,8 @@ const { user } = Astro.props;
       </div>
       <Avatar
         size="215px"
-        alt={user.name}
-        src={user.src}
+        alt={user?.name && user.name}
+        src={user?.src && user.src}
         className="mx-auto relative"
       />
     </div>
@@ -24,7 +24,7 @@ const { user } = Astro.props;
     <h1
       class="text-[80px] font-sans font-bold text-springBud leading-none mb-8"
     >
-      {user.name}
+      {user?.name && user.name}
     </h1>
     <ProfileDetails user={user} />
   </div>

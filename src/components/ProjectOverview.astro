@@ -14,8 +14,12 @@ const {
 <div class="flex gap-4">
   {
     isAvatarShowing && (
-      <a href={`/${user.username}`}>
-        <Avatar alt={user.name} src={user.avatar} size="72px" />
+      <a href={`/${user?.username && user.username}`}>
+        <Avatar
+          alt={user?.name && user.name}
+          src={user?.avatar && user.avatar}
+          size="72px"
+        />
       </a>
     )
   }
@@ -26,12 +30,15 @@ const {
           isProfileDetailsShowing && (
             <>
               <a
-                href={`/${user.username}`}
+                href={`/${user?.username && user.username}`}
                 class="font-bold underline hover:text-white inline-block mb-4"
               >
-                <strong>{user.name}</strong>
+                <strong>{user?.name && user.name}</strong>
               </a>{" "}
-              &bull; <a href={`/${user.username}`}>@{user.username}</a>
+              &bull;{" "}
+              <a href={`/${user?.username && user.username}`}>
+                @{user?.username && user.username}
+              </a>
             </>
           )
         }
@@ -40,7 +47,7 @@ const {
         {
           isUpdatesLinkShowing && (
             <a
-              href={`/${user.username}`}
+              href={`/${user?.username && user.username}`}
               class="flex text-springBud items-center hover:text-white mb-4"
             >
               <Arrow size={24} />
@@ -50,9 +57,11 @@ const {
         }
       </div>
     </div>
-    <h2 class="font-sans font-bold text-2xl">{project.name}</h2>
+    <h2 class="font-sans font-bold text-2xl">
+      {project?.name && project.name}
+    </h2>
     <p class="font-sans text-lg leading-normal">
-      {project.description}
+      {project?.description && project.description}
     </p>
   </div>
 </div>
