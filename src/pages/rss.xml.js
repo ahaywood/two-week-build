@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import supabase from '$lib/supabase';
+import {supabase} from '../lib/supabase';
 
 export async function GET(context) {
   // Generate an RSS feed for all updates, based on updates within Supabase
