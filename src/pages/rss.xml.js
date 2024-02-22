@@ -12,6 +12,7 @@ export async function GET(context) {
       pubDate: update.created_at,
       link: `${context.site}/updates/${update.id}`,
       content: update.content,
+      description: update.content,
       // customData
     }
   })
