@@ -1,6 +1,4 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
-
-
+import rss from '@astrojs/rss';
 
 export async function GET(context) {
   // Generate an RSS feed for all updates, based on updates within Supabase
@@ -9,16 +7,18 @@ export async function GET(context) {
     .select("*, projects(*, users(*))");
   const items = data.map((update) => {
     return {
+      // title
+      // pubDate
+      // customData
       link: `${context.site}/updates/${update.id}`,
       content: update.content,
     }
   })
 
   return rss({
-    title: 'Two Week Build Updates',
-    description: 'All Project Updates for Two Week Build',
-    site: context.site,
-    // items: await pagesGlobToRssItems(import.meta.glob('../content/updates/*.md')),
-    customData: `<language>en-us</language>`,
+    title: "Two Week Build - Cohort 1",
+    description: "Updates from the Two Week Build Challenge",
+    site: 'https://twoweekbuild.com',,
+    items: { ...posts }
   });
 }
