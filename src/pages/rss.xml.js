@@ -19,6 +19,6 @@ export async function GET(context) {
     title: "Two Week Build - Cohort 1",
     description: "Updates from the Two Week Build Challenge",
     site: 'https://twoweekbuild.com',
-    items: { ...posts }
+    items: { ...items }
   });
 }
